@@ -103,7 +103,7 @@ const togglePopUp = () =>{
 
 });
 
-    popupClose.addEventListener('click', () => { popup.style.display = 'none'; if(screen.width > '768'){ popup.style.opacity = 0;}});
+    popupClose.addEventListener('click', () => { popup.style.display = 'none'; });
 
 };
 togglePopUp();
