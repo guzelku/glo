@@ -1,4 +1,5 @@
 
+
 window.addEventListener('DOMContentLoaded', function(){
    'use strict'; 
 //Таймер
@@ -19,7 +20,7 @@ function getTimeRemaining(){
     return {timeRemaining, hours, minutes, seconds};
     }
 
-  function addNull(num){
+  const addNull= (num)=>{
             if(num <= 9){
             return    num = '0'+num;
             }
@@ -44,23 +45,170 @@ if(timer.timeRemaining<0){
     timeHours.textContent ='00';
     timeMinutes.textContent = '00';
     timeSeconds.textContent = '00';
-}
-
-//если разница больше сек то выводить  функцию каж 1000 мил сек=1 сек
-       // if(timer.timeRemaining >0){
-           //  setTimeout(updateClock, 1000);}
-       
-    }
-
-   // updateClock();
-
+} }
    let idInterval=setInterval(updateClock, 1000);
 }
-
 countTimer('April 23, 2020');
 
 
+
+
+
+//меню
+const toggleMenu = ()=>{
+   const  btnMenu = document.querySelector('.menu'),
+    menu = document.querySelector('menu'),
+    closeBtn = document.querySelector('.close-btn'),
+    menuItems = menu.querySelectorAll('ul>li');
+
+    const hendlerMenu = ()=>{
+        if(!menu.style.transform || menu.style.transform === `translate(-100%)`){
+            menu.style.transform =`translate(0)`;
+       }
+       else{
+        menu.style.transform =`translate(-100%)`;
+       }
+    };
+
+  
+
+
+   btnMenu.addEventListener('click', hendlerMenu );
+
+   menu.addEventListener('click',(event)=>{
+    let target = event.target;
+    if(target.matches('.close-btn')){
+    hendlerMenu();
+    }else{target = target.closest('ul');
+    if(!target){
+      menu.style.transform =`translate(0)`;
+    }
+    else{ hendlerMenu();}
+   
+    }
+
+   }
+   
+   );
+
+
+    
+
+ };
+toggleMenu();
+
+//popup модальное окно
+
+const togglePopUp = () =>{
+    const popup = document.querySelector('.popup'),
+    popupBtn = document.querySelectorAll('.popup-btn');
+   
+   
+  popupBtn.forEach((elem) => {
+          elem.addEventListener('click', () => {
+              popup.style.display = 'block';
+
+        if(screen.width > '768') {   
+          let op=0;
+        const addOpacity = () =>{
+                      
+              if(op <1){ 
+                  op +=  0.01; 
+              popup.style.opacity = op;
+            setTimeout(addOpacity, 10);
+              }
+          };
+          addOpacity();
+      }
+
+      });
+
+  });
+
+   
+  popup.addEventListener('click', (event)=>{
+      let target = event.target;
+       if(target.classList.contains('popup-close')){
+        popup.style.display = 'none'; 
+        
+        if(screen.width > '768')
+        {popup.style.opacity = 0;}
+
+       }else{
+          target = target.closest('.popup-content');
+      if(!target){
+        popup.style.display = 'none';
+      }
+       }
+
+    });
+
+
+};
+togglePopUp();
+
+
+/**функция, которая меняет контент  передавать в нее будем index нашего таба,
+ *  эта функция будет преребирать все наши табы, находить соответсвующий 
+ * и  его показвать, а остальны скрывать */
+
+
+
+//табы
+const tabs= () =>{
+  const tabHeader = document.querySelector('.service-header'),
+        tab = tabHeader.querySelectorAll('.service-header-tab'),
+        tabContent = document.querySelectorAll('.service-tab');
+
+  const toggleTabContent =(index)=>{
+  for(let i=0; i< tabContent.length; i++){
+      if(index === i){
+        tab[i].classList.add('active');
+        tabContent[i].classList.remove('d-none');
+      }else{
+        tab[i].classList.remove('active');
+        tabContent[i].classList.add('d-none');
+      }
+  }
+
+  };
+
+
+tabHeader.addEventListener('click', (event) =>{
+  let target = event.target;
+      target= target.closest('.service-header-tab');
+
+  if(target){
+    //console.log(target); проверяем таргет
+    tab.forEach((item, i)=> {
+      if(item === target){
+        toggleTabContent(i);
+        //console.log(tabContent[i]);
+      }
+    });
+  
+ 
+}
+
+})
+}
+
+
+tabs();
+
+
+
+
+
+
+
+
+
 });
+
+
+
+
 
 
 
