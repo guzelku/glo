@@ -47,11 +47,8 @@ if(timer.timeRemaining<0){
    let idInterval=setInterval(updateClock, 1000);
 }
 countTimer('April 23, 2020');
-
-});
-
-
-
+   
+   
 //меню
 const toggleMenu = ()=>{
    const  btnMenu = document.querySelector('.menu'),
@@ -114,8 +111,12 @@ togglePopUp();
 
 
 
-
 });
+
+
+
+
+
 
 
 
