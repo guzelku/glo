@@ -119,10 +119,7 @@ const togglePopUp = () =>{
        if(target.classList.contains('popup-close')){
         popup.style.display = 'none'; 
         
-        if(screen.width > '768')
-        {popup.style.opacity = 0;}
-
-       }else{
+             }else{
           target = target.closest('.popup-content');
       if(!target){
         popup.style.display = 'none';
@@ -135,10 +132,6 @@ const togglePopUp = () =>{
 };
 togglePopUp();
 
-
-/**функция, которая меняет контент  передавать в нее будем index нашего таба,
- *  эта функция будет преребирать все наши табы, находить соответсвующий 
- * и  его показвать, а остальны скрывать */
 
 
 
