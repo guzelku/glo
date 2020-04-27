@@ -72,12 +72,25 @@ const toggleMenu = ()=>{
   
 
 
-   btnMenu.addEventListener('click', hendlerMenu );
+  btnMenu.addEventListener('click', hendlerMenu );
 
-   menu.addEventListener('click',()=>{
-       hendlerMenu();
+   menu.addEventListener('click',(event)=>{
+    let target = event.target;
+    if(target.matches('.close-btn')){
+    
+      hendlerMenu();
+    
+    }else{target = target.closest('ul');
+    if(!target){
+      menu.style.transform =`translate(0)`;
+    }
+    else{ hendlerMenu();}
+   
+    }
 
-   });
+   }
+   
+   );
 
 
     
