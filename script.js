@@ -1,5 +1,4 @@
 
-
 window.addEventListener('DOMContentLoaded', function(){
    'use strict'; 
 //Таймер
@@ -72,13 +71,15 @@ const toggleMenu = ()=>{
 
   
 
-
+//первый обработчик
    btnMenu.addEventListener('click', hendlerMenu );
-
+////второй обработчик
    menu.addEventListener('click',(event)=>{
     let target = event.target;
     if(target.matches('.close-btn')){
-    hendlerMenu();
+    
+      hendlerMenu();
+    
     }else{target = target.closest('ul');
     if(!target){
       menu.style.transform =`translate(0)`;
@@ -91,8 +92,6 @@ const toggleMenu = ()=>{
    
    );
 
-
-    
 
  };
 toggleMenu();
@@ -130,9 +129,7 @@ const togglePopUp = () =>{
       let target = event.target;
        if(target.classList.contains('popup-close')){
         popup.style.display = 'none'; 
-        
-        if(screen.width > '768')
-        {popup.style.opacity = 0;}
+             
 
        }else{
           target = target.closest('.popup-content');
@@ -147,10 +144,6 @@ const togglePopUp = () =>{
 };
 togglePopUp();
 
-
-/**функция, которая меняет контент  передавать в нее будем index нашего таба,
- *  эта функция будет преребирать все наши табы, находить соответсвующий 
- * и  его показвать, а остальны скрывать */
 
 
 
@@ -198,13 +191,11 @@ tabs();
 
 
 
-
-
-
-
-
-
 });
+
+
+
+
 
 
 
