@@ -202,7 +202,7 @@ const slider = () =>{
 
  
 
-for(let i=0; i<slide.length;i++){
+for(let i=0; i<slide.length-1;i++){
  let li = document.createElement('li');
  li.classList.add ('dot');
  ulDot.appendChild(li);
